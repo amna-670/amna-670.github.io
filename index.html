@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Amna Idrees – Portfolio</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --accent:#2E86AB;
+    --accent-dark:#1a5f7a;
+    --dark:#1C1C1C;
+    --gray:#555;
+    --light:#f8f9fa;
+    --border:#e0e0e0;
+    --white:#ffffff;
+  }
+  body{font-family:'Segoe UI',Arial,sans-serif;color:var(--dark);background:var(--white);line-height:1.7;}
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  /* NAV */
+  nav{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.96);border-bottom:1px solid var(--border);z-index:100;padding:0 2rem;}
+  .nav-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;}
+  .nav-logo{font-weight:700;font-size:1.1rem;color:var(--dark);}
+  .nav-logo span{color:var(--accent);}
+  .nav-links{display:flex;gap:2rem;list-style:none;}
+  .nav-links a{font-size:0.9rem;color:var(--gray);font-weight:500;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--accent);text-decoration:none;}
+
+  /* SECTIONS */
+  section{padding:5rem 2rem;}
+  .container{max-width:960px;margin:0 auto;}
+  .section-label{font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem;}
+  .section-title{font-size:2rem;font-weight:700;color:var(--dark);margin-bottom:1rem;}
+  .divider{width:48px;height:3px;background:var(--accent);border-radius:2px;margin-bottom:2.5rem;}
+
+  /* HERO */
+  #hero{padding-top:7rem;padding-bottom:4rem;background:linear-gradient(135deg,#f0f8ff 0%,#ffffff 60%);}
+  .hero-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:3rem;}
+  .hero-text h1{font-size:3rem;font-weight:800;color:var(--dark);line-height:1.15;}
+  .hero-text h1 span{color:var(--accent);}
+  .hero-text .tagline{font-size:1.15rem;color:var(--gray);margin:1rem 0 0.5rem;}
+  .hero-text .sub{font-size:0.95rem;color:#888;margin-bottom:2rem;}
+  .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+  .btn{display:inline-block;padding:0.65rem 1.5rem;border-radius:6px;font-size:0.9rem;font-weight:600;transition:all 0.2s;cursor:pointer;}
+  .btn-primary{background:var(--accent);color:#fff;border:2px solid var(--accent);}
+  .btn-primary:hover{background:var(--accent-dark);border-color:var(--accent-dark);text-decoration:none;color:#fff;}
+  .btn-outline{background:transparent;color:var(--accent);border:2px solid var(--accent);}
+  .btn-outline:hover{background:var(--accent);color:#fff;text-decoration:none;}
+  .hero-avatar{width:220px;height:220px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-dark));display:flex;align-items:center;justify-content:center;font-size:5rem;font-weight:800;color:#fff;flex-shrink:0;border:6px solid #fff;box-shadow:0 8px 32px rgba(46,134,171,0.2);}
+
+  /* ABOUT */
+  #about{background:#fff;}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+  .about-text p{color:var(--gray);margin-bottom:1rem;font-size:0.97rem;}
+  .info-list{list-style:none;}
+  .info-list li{display:flex;gap:0.75rem;padding:0.5rem 0;border-bottom:1px solid var(--border);font-size:0.9rem;}
+  .info-list li:last-child{border-bottom:none;}
+  .info-label{font-weight:600;color:var(--dark);min-width:90px;}
+  .info-val{color:var(--gray);}
+
+  /* SKILLS */
+  #skills{background:var(--light);}
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;}
+  .skill-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:1.5rem;transition:box-shadow 0.2s;}
+  .skill-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.08);}
+  .skill-icon{font-size:1.8rem;margin-bottom:0.75rem;}
+  .skill-card h3{font-size:0.95rem;font-weight:700;color:var(--dark);margin-bottom:0.75rem;}
+  .skill-tags{display:flex;flex-wrap:wrap;gap:0.4rem;}
+  .tag{background:#e8f4f8;color:var(--accent-dark);font-size:0.75rem;font-weight:600;padding:3px 10px;border-radius:20px;}
+
+  /* PROJECTS */
+  #projects{background:#fff;}
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;}
+  .project-card{border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:box-shadow 0.2s,transform 0.2s;}
+  .project-card:hover{box-shadow:0 8px 24px rgba(0,0,0,0.1);transform:translateY(-3px);}
+  .project-header{background:linear-gradient(135deg,var(--accent),var(--accent-dark));padding:1.5rem;color:#fff;}
+  .project-badge{font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;background:rgba(255,255,255,0.2);padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:0.5rem;}
+  .project-header h3{font-size:1.05rem;font-weight:700;margin-bottom:0.25rem;}
+  .project-header p{font-size:0.82rem;opacity:0.85;}
+  .project-body{padding:1.25rem;}
+  .project-desc{font-size:0.88rem;color:var(--gray);margin-bottom:1rem;line-height:1.6;}
+  .project-highlights{list-style:none;margin-bottom:1rem;}
+  .project-highlights li{font-size:0.82rem;color:var(--gray);padding:2px 0 2px 1rem;position:relative;}
+  .project-highlights li::before{content:"–";position:absolute;left:0;color:var(--accent);}
+  .project-tech{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1rem;}
+  .tech-tag{background:#f0f0f0;color:#555;font-size:0.72rem;font-weight:600;padding:3px 8px;border-radius:4px;}
+  .project-link{font-size:0.82rem;font-weight:600;color:var(--accent);}
+  .ongoing-card .project-header{background:linear-gradient(135deg,#667eea,#764ba2);}
+
+  /* EXPERIENCE */
+  #experience{background:var(--light);}
+  .timeline{position:relative;padding-left:2rem;}
+  .timeline::before{content:'';position:absolute;left:6px;top:0;bottom:0;width:2px;background:var(--border);}
+  .timeline-item{position:relative;margin-bottom:2.5rem;}
+  .timeline-dot{position:absolute;left:-2rem;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid #fff;box-shadow:0 0 0 2px var(--accent);}
+  .timeline-date{font-size:0.78rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.25rem;}
+  .timeline-title{font-size:1rem;font-weight:700;color:var(--dark);}
+  .timeline-org{font-size:0.88rem;color:var(--gray);margin-bottom:0.5rem;}
+  .timeline-list{list-style:none;}
+  .timeline-list li{font-size:0.88rem;color:var(--gray);padding:2px 0 2px 1rem;position:relative;}
+  .timeline-list li::before{content:"–";position:absolute;left:0;color:var(--accent);}
+
+  /* CONTACT */
+  #contact{background:#fff;}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+  .contact-info p{color:var(--gray);font-size:0.95rem;margin-bottom:1.5rem;}
+  .contact-item{display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem;}
+  .contact-icon{width:38px;height:38px;border-radius:8px;background:#e8f4f8;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+  .contact-detail{font-size:0.88rem;color:var(--gray);}
+  .contact-detail strong{display:block;color:var(--dark);font-size:0.9rem;}
+  .contact-form{display:flex;flex-direction:column;gap:1rem;}
+  .form-group{display:flex;flex-direction:column;gap:0.35rem;}
+  .form-group label{font-size:0.82rem;font-weight:600;color:var(--dark);}
+  .form-group input,.form-group textarea{padding:0.65rem 0.9rem;border:1px solid var(--border);border-radius:6px;font-size:0.9rem;font-family:inherit;transition:border-color 0.2s;outline:none;}
+  .form-group input:focus,.form-group textarea:focus{border-color:var(--accent);}
+  .form-group textarea{resize:vertical;min-height:110px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+
+  /* FOOTER */
+  footer{background:var(--dark);color:#aaa;text-align:center;padding:2rem;font-size:0.85rem;}
+  footer span{color:var(--accent);}
+
+  @media(max-width:700px){
+    .hero-inner{flex-direction:column-reverse;text-align:center;}
+    .hero-btns{justify-content:center;}
+    .hero-avatar{width:140px;height:140px;font-size:3rem;}
+    .hero-text h1{font-size:2.2rem;}
+    .about-grid,.contact-grid{grid-template-columns:1fr;}
+    .form-row{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">Amna<span>.</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner container">
+    <div class="hero-text">
+      <p class="section-label">Welcome to my portfolio</p>
+      <h1>Hi, I'm <span>Amna Idrees</span></h1>
+      <p class="tagline">Aspiring Software Engineer</p>
+      <p class="sub">ADSE Student at Aptech · Focused on C# & ASP.NET · Building real-world web apps</p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary">View My Projects</a>
+        <a href="#contact" class="btn btn-outline">Get In Touch</a>
+      </div>
+    </div>
+    <div class="hero-avatar">AI</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <p class="section-label">About Me</p>
+    <h2 class="section-title">Who I Am</h2>
+    <div class="divider"></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a software engineering student currently pursuing my Advance Diploma in Software Engineering (ADSE) at Aptech, Karachi. I have a passion for building clean, functional web applications and I'm actively focused on growing my skills in C# and ASP.NET Framework.</p>
+        <p>Over my semesters, I've built full projects from scratch — a responsive front-end eyewear website to a complete full-stack e-commerce platform with an admin panel. I enjoy solving real problems through code and I'm always looking to learn and improve.</p>
+        <p>Alongside my studies, I bring almost 3 years of professional work experience in customer service at TCS Courier, which has sharpened my communication and problem-solving skills.</p>
+      </div>
+      <div>
+        <ul class="info-list">
+          <li><span class="info-label">Name</span><span class="info-val">Amna Idrees</span></li>
+          <li><span class="info-label">Location</span><span class="info-val">69 2/D block 6, PECHS Nursery Karachi, Pakistan</span></li>
+          <li><span class="info-label">Education</span><span class="info-val">ADSE – Aptech (In Progress)</span></li>
+          <li><span class="info-label">Focus</span><span class="info-val">C# · ASP.NET · Web Development</span></li>
+          <li><span class="info-label">Languages</span><span class="info-val">English · Urdu</span></li>
+          <li><span class="info-label">Status</span><span class="info-val">Open to internships & opportunities</span></li>
+          <li><span class="info-label">GitHub</span><span class="info-val"><a href="https://github.com/amna-670">github.com/amna-670</a></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <p class="section-label">What I Know</p>
+    <h2 class="section-title">Skills</h2>
+    <div class="divider"></div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">🎯</div>
+        <h3>Currently Learning</h3>
+        <div class="skill-tags">
+          <span class="tag">C#</span>
+          <span class="tag">ASP.NET Framework</span>
+          <span class="tag">.NET</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🌐</div>
+        <h3>Front-End</h3>
+        <div class="skill-tags">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Responsive Design</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">⚙️</div>
+        <h3>Back-End</h3>
+        <div class="skill-tags">
+          <span class="tag">PHP</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">Admin Panels</span>
+          <span class="tag">CRUD</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🛠️</div>
+        <h3>Tools</h3>
+        <div class="skill-tags">
+          <span class="tag">VS Code</span>
+          <span class="tag">XAMPP</span>
+          <span class="tag">GitHub</span>
+          <span class="tag">Microsoft Office</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">💬</div>
+        <h3>Soft Skills</h3>
+        <div class="skill-tags">
+          <span class="tag">Communication</span>
+          <span class="tag">Problem-Solving</span>
+          <span class="tag">Fast Learner</span>
+          <span class="tag">Team Player</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <p class="section-label">What I've Built</p>
+    <h2 class="section-title">Projects</h2>
+    <div class="divider"></div>
+    <div class="projects-grid">
+
+      <!-- Ongoing -->
+      <div class="project-card ongoing-card">
+        <div class="project-header">
+          <span class="project-badge">🔄 In Progress · 3rd Semester</span>
+          <h3>Current Project</h3>
+          <p>Currently in development</p>
+        </div>
+        <div class="project-body">
+          <p class="project-desc">Actively working on a new project as part of my ADSE coursework, applying and expanding skills learned in previous semesters.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Coming Soon</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- GlamAura -->
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-badge">✅ Completed · 2nd Semester</span>
+          <h3>GlamAura – E-Commerce Platform</h3>
+          <p>Full-stack cosmetics & jewelry store</p>
+        </div>
+        <div class="project-body">
+          <p class="project-desc">A complete e-commerce web application for a cosmetics and jewelry brand, featuring a customer-facing store and a full admin dashboard.</p>
+          <ul class="project-highlights">
+            <li>Product browsing with category filtering & search</li>
+            <li>Shopping cart with quantity & order checkout</li>
+            <li>Admin panel – Add/Update/Delete products & records</li>
+            <li>Reports: Top 10 products & top 10 customers</li>
+            <li>Database backup from admin panel</li>
+          </ul>
+          <div class="project-tech">
+            <span class="tech-tag">PHP</span>
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">HTML</span>
+            <span class="tech-tag">CSS</span>
+            <span class="tech-tag">JavaScript</span>
+          </div>
+          <a href="https://github.com/amna-670/GlamAura" class="project-link">→ View on GitHub</a>
+        </div>
+      </div>
+
+      <!-- Eyeonic -->
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-badge">✅ Completed · 1st Semester</span>
+          <h3>Eyeonic – Eyewear Website</h3>
+          <p>Responsive front-end e-commerce site</p>
+        </div>
+        <div class="project-body">
+          <p class="project-desc">A multi-page responsive front-end website for an eyewear brand, built from scratch with product categories, brand filtering, and comparison features.</p>
+          <ul class="project-highlights">
+            <li>Carousel slider on homepage for featured products</li>
+            <li>Brand filtering (Ray-Ban etc.) & category filtering</li>
+            <li>Product comparison across different brands</li>
+            <li>Contact page with email integration</li>
+          </ul>
+          <div class="project-tech">
+            <span class="tech-tag">HTML</span>
+            <span class="tech-tag">CSS</span>
+            <span class="tech-tag">JavaScript</span>
+          </div>
+          <a href="https://github.com/amna-670/eyeonic-ecommerce-website" class="project-link">→ View on GitHub</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <p class="section-label">My Journey</p>
+    <h2 class="section-title">Education & Experience</h2>
+    <div class="divider"></div>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2024 – In Progress</div>
+        <div class="timeline-title">ADSE – Advance Diploma in Software Engineering</div>
+        <div class="timeline-org">Aptech, Karachi</div>
+        <ul class="timeline-list">
+          <li>Built full-stack web projects across multiple semesters</li>
+          <li>Currently focusing on C# and ASP.NET Framework</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2024</div>
+        <div class="timeline-title">Intermediate in Computer Science</div>
+        <div class="timeline-org">Khatoon-e-Pakistan College, Karachi</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2022 – 2025</div>
+        <div class="timeline-title">Customer Service Representative</div>
+        <div class="timeline-org">TCS – Courier Company</div>
+        <ul class="timeline-list">
+          <li>Resolved customer inquiries and complaints efficiently</li>
+          <li>Coordinated order tracking and delivery management</li>
+          <li>Demonstrated 3 years of reliability and professionalism</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label">Let's Talk</p>
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="divider"></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p>I'm open to internship opportunities, freelance projects, and collaborations. Feel free to reach out!</p>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div class="contact-detail"><strong>Email</strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e3828e8d828a8791868690a3868e828a8fcd808c8e">[email&#160;protected]</a></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-detail"><strong>Location</strong>Karachi, Pakistan</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💻</div>
+          <div class="contact-detail"><strong>GitHub</strong><a href="https://github.com/amna-670">github.com/amnaidrees</a></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🎓</div>
+          <div class="contact-detail"><strong>Status</strong>Open to internships & opportunities</div>
+        </div>
+      </div>
+      <form class="contact-form" action="https://formspree.io/f/mgopdbdd" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="name" placeholder="Your name" required/>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="your@email.com" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <input type="text" name="subject" placeholder="What's this about?"/>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea name="message" placeholder="Your message..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:fit-content;">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+ 
+
+<!-- FOOTER -->
+<footer>
+  <p>Designed & Built by <span>Amna Idrees</span> · Karachi, Pakistan · 2026</p>
+  <p style="margin-top:0.5rem;font-size:0.78rem;">Open to internships & opportunities in C# · ASP.NET · Web Development</p>
+</footer>
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      e.preventDefault();
+      const el=document.querySelector(a.getAttribute('href'));
+      if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  });
+
+  function handleSubmit(e){
+    e.preventDefault();
+    const btn=e.target.querySelector('button');
+    btn.textContent='Message Sent! ✓';
+    btn.style.background='#28a745';
+    btn.style.borderColor='#28a745';
+    setTimeout(()=>{
+      btn.textContent='Send Message';
+      btn.style.background='';
+      btn.style.borderColor='';
+      e.target.reset();
+    },3000);
+  }
+</script>
+</body>
+</html>
